@@ -325,6 +325,11 @@ void printToken(Token *token) {
   case SB_RPAR: printf("SB_RPAR\n"); break;
   case SB_LSEL: printf("SB_LSEL\n"); break;
   case SB_RSEL: printf("SB_RSEL\n"); break;
+  ///new///
+  case SB_LBRACKET: printf("SB_LBRACKET\n"); break;
+  case SB_RBRACKET: printf("SB_RBRACKET\n"); break;
+  ///new///
+
   }
 }
 

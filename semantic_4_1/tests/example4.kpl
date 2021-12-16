@@ -12,7 +12,7 @@ VAR I : INTEGER;
 BEGIN
   N := READI;
   FOR I := 1 TO N DO
-     A(.I.) := READI;
+     A[I] := READI;
 END;
 
 PROCEDURE OUTPUT;
