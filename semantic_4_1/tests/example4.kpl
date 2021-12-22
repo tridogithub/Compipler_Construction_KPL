@@ -1,7 +1,7 @@
 PROGRAM EXAMPLE4;  (* Example 4 *)
 CONST MAX = 10;
 TYPE T = INTEGER;
-VAR  A : ARRAY(. 10 .) OF T;
+VAR  A : ARRAY[ 10 ] OF T;
      N : INTEGER;
      CH : CHAR;
      f : FLOAT;
@@ -20,7 +20,7 @@ VAR I : INTEGER;
 BEGIN
   FOR I := 1 TO N DO
      BEGIN
-       CALL WRITEI(A(.I.));
+       CALL WRITEI(A[I]);
        CALL WRITELN;
      END
 END;
@@ -33,7 +33,7 @@ BEGIN
     I := 1;
     WHILE I <= N DO
      BEGIN
-       S := S + A(.I.);
+       S := S + A[I];
        I := I + 1;
      END
 END;
@@ -45,6 +45,7 @@ BEGIN
        CALL INPUT;
        CALL OUTPUT;
        CALL WRITEI(SUM);
+       CALL WRITEF(f);
        CH := READC;
      END
 END.  (* Example 4 *)

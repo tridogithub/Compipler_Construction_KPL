@@ -343,12 +343,14 @@ Type *compileType(void)
     break;
   case KW_ARRAY:
     eat(KW_ARRAY);
-    eat(SB_LSEL);
+    // eat(SB_LSEL);
+    eat(SB_LBRACKET);
     eat(TK_NUMBER);
 
     arraySize = currentToken->value;
 
-    eat(SB_RSEL);
+    // eat(SB_RSEL);
+    eat(SB_RBRACKET);
     eat(KW_OF);
     elementType = compileType();
     type = makeArrayType(arraySize, elementType);
