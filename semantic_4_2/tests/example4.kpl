@@ -34,7 +34,8 @@ BEGIN
     WHILE I <= N DO
      BEGIN
        S := S + A[I];
-       I := I + 1;
+       F *= 0.2;
+       I := I % 1.2;
      END
 END;
 
@@ -45,6 +46,7 @@ BEGIN
        CALL INPUT;
        CALL OUTPUT;
        CALL WRITEI(SUM);
+       f := READF;
        CALL WRITEF(f);
        CH := READC;
      END

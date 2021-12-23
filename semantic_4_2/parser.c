@@ -511,9 +511,31 @@ void compileAssignSt(void)
   Type *expType = NULL;
 
   lvalueType = compileLValue();
-  eat(SB_ASSIGN);
+  // eat(SB_ASSIGN);
+  int checkType = 0;
+  switch(lookAhead->tokenType)
+  {
+    case SB_ASSIGN_MINUS:
+      eat(SB_ASSIGN_MINUS);
+      break;
+    case SB_ASSIGN_PLUS:
+      eat(SB_ASSIGN_PLUS);
+      break;
+    case SB_ASSIGN_SLASH:
+      eat(SB_ASSIGN_SLASH);
+      break;
+    case SB_ASSIGN_TIMES:
+      eat(SB_ASSIGN_TIMES);
+      break;
+    default:
+      checkType = 1;
+      eat(SB_ASSIGN);
+      break;
+  }
   expType = compileExpression();
-  checkTypeEquality(lvalueType, expType);
+  if(checkType == 1) {
+    checkTypeEquality(lvalueType, expType);
+  }
 }
 
 void compileCallSt(void)
@@ -642,6 +664,9 @@ void compileArguments(ObjectNode *paramList)
     // Check FOLLOW set
   case SB_TIMES:
   case SB_SLASH:
+  ///NEW///
+  case SB_MOD:
+  ///NEW///
   case SB_PLUS:
   case SB_MINUS:
   case KW_TO:
@@ -787,6 +812,9 @@ Type *compileTerm(void)
   Type *type;
 
   type = compileFactor();
+  if(lookAhead->tokenType == SB_MOD && type->typeClass != TP_INT) {
+    error(ERR_MODULO_OPERATOR_CANNOT_USE, currentToken->lineNo, currentToken->colNo);
+  }
   compileTerm2();
 
   return type;
@@ -808,6 +836,13 @@ void compileTerm2(void)
     eat(SB_SLASH);
     type = compileFactor();
     checkIntType(type);
+    compileTerm2();
+    break;
+  case SB_MOD:
+    eat(SB_MOD);
+    type = compileFactor();
+    if(type->typeClass != TP_INT)
+      error(ERR_MODULO_OPERATOR_CANNOT_USE, currentToken->lineNo, currentToken->colNo);
     compileTerm2();
     break;
     // check the FOLLOW set

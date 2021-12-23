@@ -147,18 +147,34 @@ Token* getToken(void) {
   case CHAR_PLUS: 
     token = makeToken(SB_PLUS, lineNo, colNo);
     readChar(); 
+    if(charCodes[currentChar] == CHAR_EQ){
+      token->tokenType = SB_ASSIGN_PLUS;
+      readChar();
+    }
     return token;
   case CHAR_MINUS:
     token = makeToken(SB_MINUS, lineNo, colNo);
     readChar(); 
+    if(charCodes[currentChar] == CHAR_EQ){
+        token->tokenType = SB_ASSIGN_MINUS;
+        readChar();
+    }
     return token;
   case CHAR_TIMES:
     token = makeToken(SB_TIMES, lineNo, colNo);
     readChar(); 
+    if(charCodes[currentChar] == CHAR_EQ){
+      token->tokenType = SB_ASSIGN_TIMES;
+      readChar();
+    }
     return token;
   case CHAR_SLASH:
     token = makeToken(SB_SLASH, lineNo, colNo);
     readChar(); 
+    if(charCodes[currentChar] == CHAR_EQ){
+      token->tokenType = SB_ASSIGN_SLASH;
+      readChar();
+    }
     return token;
   case CHAR_LT:
     ln = lineNo;
@@ -248,6 +264,12 @@ Token* getToken(void) {
     token = makeToken(SB_RBRACKET, lineNo, colNo);
     readChar(); 
     return token;
+  ///NEW///
+  case CHAR_MOD:
+    token = makeToken(SB_MOD, lineNo, colNo);
+    readChar(); 
+    return token;
+  ///NEW///
   default:
     token = makeToken(TK_NONE, lineNo, colNo);
     error(ERR_INVALID_SYMBOL, lineNo, colNo);
@@ -311,6 +333,12 @@ void printToken(Token *token) {
   case SB_PERIOD: printf("SB_PERIOD\n"); break;
   case SB_COMMA: printf("SB_COMMA\n"); break;
   case SB_ASSIGN: printf("SB_ASSIGN\n"); break;
+  ///NEW///
+  case SB_ASSIGN_MINUS: printf("SB_ASSIGN_MINUS\n"); break;
+  case SB_ASSIGN_PLUS: printf("SB_ASSIGN_PLUS\n"); break;
+  case SB_ASSIGN_SLASH: printf("SB_ASSIGN_SLASH\n"); break;
+  case SB_ASSIGN_TIMES: printf("SB_ASSIGN_TIME\n"); break;
+  ///NEW///
   case SB_EQ: printf("SB_EQ\n"); break;
   case SB_NEQ: printf("SB_NEQ\n"); break;
   case SB_LT: printf("SB_LT\n"); break;
@@ -328,6 +356,7 @@ void printToken(Token *token) {
   ///new///
   case SB_LBRACKET: printf("SB_LBRACKET\n"); break;
   case SB_RBRACKET: printf("SB_RBRACKET\n"); break;
+  case SB_MOD: printf("SB_MOD\n"); break;
   ///new///
 
   }

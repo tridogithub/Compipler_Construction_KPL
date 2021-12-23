@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "error.h"
 
-#define NUM_OF_ERRORS 30
+#define NUM_OF_ERRORS 32
 
 struct ErrorMessage {
   ErrorCode errorCode;
@@ -45,7 +45,8 @@ struct ErrorMessage errors[NUM_OF_ERRORS] = {
   {ERR_DUPLICATE_IDENT, "Duplicate identifier."},
   {ERR_TYPE_INCONSISTENCY, "Type inconsistency"},
   {ERR_PARAMETERS_ARGUMENTS_INCONSISTENCY, "The number of arguments and the number of parameters are inconsistent."},
-  {ERR_FLOAT_INDEX_FOR_STATEMENT, "Wrong float index for FOR statement."}
+  {ERR_FLOAT_INDEX_FOR_STATEMENT, "Wrong float index for FOR statement."},
+  {ERR_MODULO_OPERATOR_CANNOT_USE, "Cannot use real number with modulo operator"}
 };
 
 void error(ErrorCode err, int lineNo, int colNo) {
