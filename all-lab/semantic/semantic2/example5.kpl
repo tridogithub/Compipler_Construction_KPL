@@ -1,0 +1,13 @@
+Program Example5; (* Example 1 *)
+const c = 1;
+type t = char;
+VAR x: Float;
+function f(i : integer):char;
+const b = c;
+type a = array[ 5] of t;
+begin
+f := 'a';
+end;
+Begin
+    x += 4.3 + 2.1
+End. (* Example 1 *)

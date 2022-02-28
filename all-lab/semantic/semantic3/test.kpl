@@ -1,0 +1,9 @@
+PROGRAM  example1;
+VAR A: ARRAY [ 10 ] OF FLOAT;
+F: FLOAT;
+I: INTEGER;
+BEGIN
+    F := READF;
+    I := 10 % 5;
+    FOR I := 1 TO 100 DO A[ I ] := READF;
+END.

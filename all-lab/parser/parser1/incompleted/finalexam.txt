@@ -1,0 +1,8 @@
+PROGRAM final_term; 
+CONST pi=3.1416;
+TYPE t=float;
+VAR f:t;
+    r:t;
+BEGIN
+  f += 2.0*r*pi;
+END.

@@ -1,0 +1,8 @@
+Program Example1; (* Example 1 *)
+VAR i : integer;
+    j : integer; 
+    a: float;
+    b: float;
+Begin
+    a := (i>j) ? a : b ;
+End. (* Example 1 *)

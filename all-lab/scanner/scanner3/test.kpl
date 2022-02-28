@@ -1,0 +1,13 @@
+PROGRAM finalterm; 
+CONST pi=3.1416;
+    e=p;
+TYPE t=float;
+VAR i:t;
+    a: array [10] of t;
+FUNCTION ham(x:float;var y:float):float;
+BEGIN
+  x-=y % 4.5;
+END;
+BEGIN
+ FOR i:=1 TO 100 DO a[i] := ham(0.5, 0.5);
+END.

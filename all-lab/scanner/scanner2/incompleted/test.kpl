@@ -1,0 +1,5 @@
+PROGRAM test;
+VAR f: float;
+BEGIN
+f := 3.1416;
+END.

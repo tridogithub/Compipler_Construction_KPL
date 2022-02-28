@@ -1,0 +1,6 @@
+Program Example1; (* Example 1 *)
+Var I : integer;
+    J : integer;
+Begin
+    I := I % J;
+End. (* Example 1 *)
